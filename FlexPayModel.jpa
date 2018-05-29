@@ -1,0 +1,1485 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" v="4.4" rws="_15058931426522" Pws="_15058931426522" cws="_15058931426522" sm="false" xs="false" id="_15058931426511" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:mapped-superclass compositePrimaryKeyClass="AbstractEntityPK" abs="true" class="AbstractEntity" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895891743208">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.SimpleEntity&lt;java.lang.Long&gt;"/>
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.util.CollectionSupport"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="boolean" v="true" name="active" ft="false" id="_1505895891743210">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:version attribute-type="Integer" v="true" name="version" ft="false" id="_1505895891743209"/>
+        </jpa:attributes>
+        <jpa:el>
+            <jpa:ln e="true" n="com.systemspecs.remita.domain.entity.DefaultEntityListener.class"/>
+        </jpa:el>
+    </jpa:mapped-superclass>
+    <jpa:mapped-superclass compositePrimaryKeyClass="AbstractAuditedEntityPK" abs="true" class="AbstractAuditedEntity" superclassId="_1505895891743208" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895891742203">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.AuditedEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="created" ft="false" id="_1505895891742204">
+                <jpa:an e="true" n="@org.springframework.data.annotation.CreatedDate"/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="modified" ft="false" id="_1505895891742205">
+                <jpa:an e="true" n="@org.springframework.data.annotation.LastModifiedDate"/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895892419283" v="true" name="createdBy" ft="false" id="_1505895891742206">
+                <jpa:an e="true" n="@org.springframework.data.annotation.CreatedBy"/>
+                <jpa:join-column name="created_by" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895892419283" v="true" name="modifiedBy" ft="false" id="_1505895891742207">
+                <jpa:an e="true" n="@org.springframework.data.annotation.LastModifiedBy"/>
+                <jpa:join-column name="modified_by" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+        <jpa:el>
+            <jpa:ln e="true" n="com.systemspecs.remita.domain.entity.DefaultAuditedEntityListener.class"/>
+        </jpa:el>
+    </jpa:mapped-superclass>
+    <jpa:mapped-superclass compositePrimaryKeyClass="AbstractSimpleAuditedEntityPK" abs="true" class="AbstractSimpleAuditedEntity" superclassId="_1505895891742203" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895891741201">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.SimpleEntity&lt;java.lang.Long&gt;"/>
+        <jpa:attributes>
+            <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_1505895891742202">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+    </jpa:mapped-superclass>
+    <jpa:mapped-superclass compositePrimaryKeyClass="AbstractContactEntityPK" abs="true" class="AbstractContactEntity" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895892209276">
+        <jpa:inf e="true" n="com.systemspecs.remita.ecommerce.domain.entity.contact.ContactEntity"/>
+        <jpa:attributes>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895894228471" v="true" name="contact" ft="false" id="_1505895892209277"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895892038244" v="true" name="organisation" ft="false" id="_1505895892209278"/>
+        </jpa:attributes>
+    </jpa:mapped-superclass>
+    <jpa:mapped-superclass compositePrimaryKeyClass="AbstractUserEntityPK" abs="true" class="AbstractUserEntity" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895892482310">
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.UserEntity&lt;com.systemspecs.remita.domain.entity.security.core.User&gt;"/>
+        <jpa:attributes>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895892419283" v="true" name="user" ft="false" id="_1505895892482311"/>
+        </jpa:attributes>
+    </jpa:mapped-superclass>
+    <jpa:mapped-superclass compositePrimaryKeyClass="BaseModelPK" abs="true" class="BaseModel" superclassId="_1505895891743208" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895892880326">
+        <jpa:annotation e="true" n="@javax.xml.bind.annotation.XmlAccessorType(javax.xml.bind.annotation.XmlAccessType.FIELD)"/>
+        <jpa:annotation e="true" n="@javax.xml.bind.annotation.XmlTransient"/>
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:inf e="true" n="java.lang.Cloneable"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="creationDate" ft="false" id="_1505895892880328">
+                <jpa:an e="true" n="@javax.xml.bind.annotation.XmlTransient"/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="description" ft="false" id="_1505895892881329">
+                <jpa:an e="true" n="@javax.xml.bind.annotation.XmlElement(name=&quot;Description&quot;)"/>
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="65535"/>
+                <jpa:lob/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="dataloadCode" ft="false" id="_1505895892881330">
+                <jpa:an e="true" n="@javax.xml.bind.annotation.XmlTransient"/>
+            </jpa:basic>
+            <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_1505895892880327">
+                <jpa:an e="true" n="@javax.xml.bind.annotation.XmlTransient"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+    </jpa:mapped-superclass>
+    <jpa:mapped-superclass compositePrimaryKeyClass="AbstractCommentPK" abs="false" class="AbstractComment" superclassId="_1505895892482310" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895893038342">
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="comments" ft="false" id="_1505895893038343">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="1000"/>
+                <jpa:lob/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:mapped-superclass>
+    <jpa:mapped-superclass compositePrimaryKeyClass="AbstractSimpleEntityPK" abs="true" class="AbstractSimpleEntity" superclassId="_1505895891743208" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895893221371">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.SimpleEntity&lt;java.lang.Long&gt;"/>
+        <jpa:attributes>
+            <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_1505895893221372">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+    </jpa:mapped-superclass>
+    <jpa:mapped-superclass compositePrimaryKeyClass="DefaultServiceResponsePK" abs="false" class="DefaultServiceResponse" superclassId="_1505895892880326" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895893903440">
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="responseId" ft="false" id="_1505895893903441"/>
+            <jpa:basic attribute-type="String" v="true" name="responseCode" ft="false" id="_1505895893903442"/>
+            <jpa:basic attribute-type="String" v="true" name="responseMessage" ft="false" id="_1505895893903443"/>
+        </jpa:attributes>
+    </jpa:mapped-superclass>
+    <jpa:mapped-superclass compositePrimaryKeyClass="AbstractOrganisationEntityPK" abs="true" class="AbstractOrganisationEntity" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895894241485">
+        <jpa:inf e="true" n="com.systemspecs.remita.ecommerce.domain.entity.OrganisationEntity&lt;T&gt;"/>
+        <jpa:attributes/>
+    </jpa:mapped-superclass>
+    <jpa:mapped-superclass compositePrimaryKeyClass="AbstractReviewPK" abs="true" class="AbstractReview" superclassId="_1505895892482310" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895894574522">
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.TitledEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="comments" ft="false" id="_1505895894574523">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="65535"/>
+                <jpa:lob/>
+            </jpa:basic>
+            <jpa:basic attribute-type="double" v="true" name="rating" ft="false" id="_1505895894574524">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="title" ft="false" id="_1505895894574525"/>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="reviewDate" ft="false" id="_1505895894574526">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:mapped-superclass>
+    <jpa:mapped-superclass compositePrimaryKeyClass="AbstractEntityPK" abs="true" class="AbstractEntity" v="true" xre="false" m="false" rootElement="_15058931426511" id="_150589580241665">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.SimpleEntity&lt;java.lang.Long&gt;"/>
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.util.CollectionSupport"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="boolean" v="true" name="active" ft="false" id="_150589580241667">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:version attribute-type="Integer" v="true" name="version" ft="false" id="_150589580241666"/>
+        </jpa:attributes>
+        <jpa:el>
+            <jpa:ln e="true" n="com.systemspecs.remita.domain.entity.DefaultEntityListener.class"/>
+        </jpa:el>
+    </jpa:mapped-superclass>
+    <jpa:mapped-superclass compositePrimaryKeyClass="AbstractAuditedEntityPK" abs="true" class="AbstractAuditedEntity" superclassId="_150589580241665" v="true" xre="false" m="false" rootElement="_15058931426511" id="_150589580241260">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.AuditedEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="created" ft="false" id="_150589580241261">
+                <jpa:an e="true" n="@org.springframework.data.annotation.CreatedDate"/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="modified" ft="false" id="_150589580241362">
+                <jpa:an e="true" n="@org.springframework.data.annotation.LastModifiedDate"/>
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895803270131" v="true" name="createdBy" ft="false" id="_150589580241363">
+                <jpa:an e="true" n="@org.springframework.data.annotation.CreatedBy"/>
+                <jpa:join-column name="created_by" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895803270131" v="true" name="modifiedBy" ft="false" id="_150589580241564">
+                <jpa:an e="true" n="@org.springframework.data.annotation.LastModifiedBy"/>
+                <jpa:join-column name="modified_by" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+        <jpa:el>
+            <jpa:ln e="true" n="com.systemspecs.remita.domain.entity.DefaultAuditedEntityListener.class"/>
+        </jpa:el>
+    </jpa:mapped-superclass>
+    <jpa:mapped-superclass compositePrimaryKeyClass="AbstractSimpleAuditedEntityPK" abs="true" class="AbstractSimpleAuditedEntity" superclassId="_150589580241260" v="true" xre="false" m="false" rootElement="_15058931426511" id="_150589580241158">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.SimpleEntity&lt;java.lang.Long&gt;"/>
+        <jpa:attributes>
+            <jpa:id attribute-type="Long" v="true" name="id" ft="false" id="_150589580241159">
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+        </jpa:attributes>
+    </jpa:mapped-superclass>
+    <jpa:mapped-superclass compositePrimaryKeyClass="AbstractUserEntityPK" abs="true" class="AbstractUserEntity" superclassId="_150589580241158" v="true" xre="false" m="false" rootElement="_15058931426511" id="_150589580259981">
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.UserEntity&lt;com.systemspecs.remita.domain.entity.security.core.User&gt;"/>
+        <jpa:attributes>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895803270131" v="true" xvt="" name="user" ft="false" id="_150589580259982">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:mapped-superclass>
+    <jpa:entity compositePrimaryKeyClass="ResourceFolderPK" abs="false" class="ResourceFolder" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895891741198">
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.NamedEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_1505895891741199">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="filePath" ft="false" id="_1505895891741200">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ProductPK" abs="true" class="Product" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895891826212">
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.NamedEntity"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.ecommerce.domain.entity.MerchantEntity"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.util.CollectionSupport"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_1505895891826213">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="description" ft="false" id="_1505895891827215">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="65535"/>
+                <jpa:lob/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="sku" ft="false" id="_1505895891827216">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="double" v="true" name="unitPrice" ft="false" id="_1505895891827217">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895894420497" v="true" name="category" ft="false" id="_1505895891826214"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895894883544" v="true" name="currency" ft="false" id="_1505895891827218"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895893802433" v="true" name="details" ft="false" id="_1505895891845225"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895892778320" v="true" name="supplier" ft="false" id="_1505895891845227"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895892033242" v="true" name="merchant" ft="false" id="_1505895891845229"/>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_1505895894563517" connected-attribute-id="_1505895894563518" v="true" name="reviews" ft="false" id="_1505895891840223"/>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_1505895895179565" connected-attribute-id="_1505895895179566" v="true" name="options" ft="false" id="_1505895891845226"/>
+            <jpa:element-collection target-class="com.systemspecs.remita.domain.entity.FileResource" collection-type="java.util.List" v="true" name="mediaResources" ft="false" id="_1505895891844224">
+                <jpa:collection-table name="product_media_resources"/>
+            </jpa:element-collection>
+            <jpa:element-collection target-class="java.lang.String" collection-type="java.util.Set" v="true" name="tags" ft="false" id="_1505895891845228">
+                <jpa:collection-table name="product_tags"/>
+            </jpa:element-collection>
+            <jpa:embedded connected-class-id="_1505895891840220" v="true" name="reviewStatistics" ft="false" id="_1505895891827219"/>
+        </jpa:attributes>
+        <jpa:table>
+            <jpa:index n="idx_product_names">
+                <jpa:c c="name"/>
+            </jpa:index>
+        </jpa:table>
+        <jpa:inheritance strategy="JOINED"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ServicePK" abs="false" class="Service" superclassId="_1505895891826212" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895891825211">
+        <jpa:attributes/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="CatalogPK" abs="false" class="Catalog" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895891893230">
+        <jpa:inf e="true" n="com.systemspecs.remita.ecommerce.domain.entity.MerchantEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_1505895891893231">
+                <jpa:column unique="true" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="description" ft="false" id="_1505895891897233"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895892033242" connected-attribute-id="_1505895892033243" v="true" name="merchant" ft="false" id="_1505895891897234"/>
+            <jpa:one-to-many own="true" collection-type="java.util.List" connected-entity-id="_1505895891826212" fetch="LAZY" v="true" name="products" ft="false" id="_1505895891893232"/>
+        </jpa:attributes>
+        <jpa:table>
+            <jpa:index n="catalog_name">
+                <jpa:c c="name"/>
+            </jpa:index>
+        </jpa:table>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="OrderItemPK" abs="false" class="OrderItem" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895891969235">
+        <jpa:inf e="true" n="com.systemspecs.remita.ecommerce.domain.entity.ProductEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="int" v="true" name="quantity" ft="false" id="_1505895891969238">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="com.systemspecs.remita.ecommerce.domain.entity.OrderItemStatus" v="true" name="status" ft="false" id="_1505895891969239">
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="itemDelivered" ft="false" id="_1505895891969240">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="double" v="true" name="price" ft="false" id="_1505895891969241">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:many-to-one optional="true" primaryKey="false" connected-entity-id="_1505895893314377" connected-attribute-id="_1505895893314378" v="true" xvt="" name="order" ft="false" id="_1505895891969236">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895891826212" v="true" name="product" ft="false" id="_1505895891969237"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="OrganisationPK" abs="false" class="Organisation" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895892038244">
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.NamedEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_1505895892038245">
+                <jpa:an e="true" n="@org.hibernate.validator.constraints.NotEmpty"/>
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="code" ft="false" id="_1505895892038246">
+                <jpa:column unique="true" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="logo" ft="false" id="_1505895892038247">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="65535"/>
+                <jpa:lob/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="email" ft="false" id="_1505895892038249"/>
+            <jpa:basic attribute-type="String" v="true" name="website" ft="false" id="_1505895892038250"/>
+            <jpa:basic attribute-type="String" v="true" name="fax" ft="false" id="_1505895892050257"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895893944444" v="true" name="industryGroup" ft="false" id="_1505895892038248"/>
+            <jpa:one-to-many own="true" collection-type="java.util.Set" connected-entity-id="_1505895895092561" fetch="LAZY" v="true" name="registrationDocuments" ft="false" id="_1505895892055269"/>
+            <jpa:element-collection collection-type="java.util.Set" connected-class-id="_1505895892050252" v="true" name="phoneNumbers" ft="false" id="_1505895892038251"/>
+            <jpa:embedded connected-class-id="_1505895892055259" v="true" name="address" ft="false" id="_1505895892050258"/>
+        </jpa:attributes>
+        <jpa:table name="companies">
+            <jpa:index n="company_name" u="true">
+                <jpa:c c="name"/>
+            </jpa:index>
+        </jpa:table>
+        <jpa:inheritance strategy="JOINED"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="MerchantPK" abs="false" class="Merchant" superclassId="_1505895892038244" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895892033242">
+        <jpa:attributes>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_1505895891893230" connected-attribute-id="_1505895891897234" v="true" name="catalogs" ft="false" id="_1505895892033243"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ContactActivityPK" abs="false" class="ContactActivity" superclassId="_1505895892209276" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895892204270">
+        <jpa:attributes>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="activityTimestamp" ft="false" id="_1505895892204272">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="com.systemspecs.remita.ecommerce.domain.entity.contact.ContactChannel" v="true" name="contactChannel" ft="false" id="_1505895892204273">
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="activityOutcome" ft="false" id="_1505895892204274">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="1000"/>
+                <jpa:lob/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895893675423" v="true" name="opportunity" ft="false" id="_1505895892204271"/>
+            <jpa:one-to-many own="true" collection-type="java.util.List" connected-entity-id="_1505895893038341" v="true" name="comments" ft="false" id="_1505895892204275"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="UserPK" abs="false" class="User" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895892419283">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:inf e="true" n="org.springframework.security.core.userdetails.UserDetails"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="username" ft="false" id="_1505895892424285">
+                <jpa:column unique="true" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="password" ft="false" id="_1505895892424286"/>
+            <jpa:basic attribute-type="String" v="true" name="email" ft="false" id="_1505895892424287">
+                <jpa:column unique="true" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="com.systemspecs.remita.domain.entity.security.core.UserAccessStatus" v="true" name="accessStatus" ft="false" id="_1505895892425289">
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="credentialExpiryDate" ft="false" id="_1505895892425290">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="gravatarUrl" ft="false" id="_1505895892425291"/>
+            <jpa:basic attribute-type="boolean" v="true" name="emailVerified" ft="false" id="_1505895892425292"/>
+            <jpa:basic attribute-type="String" v="true" name="emailVerificationCode" ft="false" id="_1505895892425293"/>
+            <jpa:basic attribute-type="String" v="true" name="surname" ft="false" id="_1505895892425294"/>
+            <jpa:basic attribute-type="String" v="true" name="firstName" ft="false" id="_1505895892425295"/>
+            <jpa:basic attribute-type="String" v="true" name="thumbnailUri" ft="false" id="_1505895892425297"/>
+            <jpa:basic attribute-type="com.systemspecs.remita.domain.entity.Gender" v="true" name="gender" ft="false" id="_1505895892425298">
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="title" ft="false" id="_1505895892425299"/>
+            <jpa:basic attribute-type="String" v="true" name="middleNames" ft="false" id="_1505895892425300"/>
+            <jpa:basic attribute-type="String" v="true" name="suffix" ft="false" id="_1505895892425301"/>
+            <jpa:element-collection target-class="java.lang.String" fetch="EAGER" collection-type="java.util.Set" v="true" name="roles" ft="false" id="_1505895892424288">
+                <jpa:collection-table name="user_roles"/>
+            </jpa:element-collection>
+            <jpa:element-collection target-class="java.lang.String" fetch="LAZY" collection-type="java.util.Set" v="true" name="phoneNumbers" ft="false" id="_1505895892425296">
+                <jpa:collection-table name="user_phone_numbers">
+                    <jpa:join-column name="user_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                </jpa:collection-table>
+            </jpa:element-collection>
+        </jpa:attributes>
+        <jpa:table>
+            <jpa:index n="idx_users_username" u="true">
+                <jpa:c c="username"/>
+            </jpa:index>
+            <jpa:index n="idx_users_email" u="true">
+                <jpa:c c="email"/>
+            </jpa:index>
+        </jpa:table>
+        <jpa:inheritance strategy="JOINED"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="StaffPK" abs="false" class="Staff" superclassId="_1505895892419283" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895892400279">
+        <jpa:inf e="true" n="com.systemspecs.remita.ecommerce.domain.entity.OrganisationEntity&lt;com.systemspecs.remita.ecommerce.domain.entity.Organisation&gt;"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="jobTitle" ft="false" id="_1505895892400281"/>
+            <jpa:basic attribute-type="String" v="true" name="department" ft="false" id="_1505895892400282"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895892038244" v="true" name="organisation" ft="false" id="_1505895892400280"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="AbstractAuditLogPK" abs="false" class="AbstractAuditLog" superclassId="_1505895892482310" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895892482303">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="resourceUri" ft="false" id="_1505895892482304">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="eventTimestamp" ft="false" id="_1505895892482305">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="userIpAddress" ft="false" id="_1505895892482306">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="userLocation" ft="false" id="_1505895892482307"/>
+            <jpa:basic attribute-type="String" v="true" name="userDevice" ft="false" id="_1505895892482308"/>
+            <jpa:basic attribute-type="String" v="true" name="userRoles" ft="false" id="_1505895892482309">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="UserAccessLogPK" abs="false" class="UserAccessLog" superclassId="_1505895892482303" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895892482302">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:attributes/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ShipperPK" abs="false" class="Shipper" superclassId="_1505895892038244" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895892542312">
+        <jpa:attributes/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="PromotionPK" abs="false" class="Promotion" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895892594314">
+        <jpa:inf e="true" n="com.systemspecs.remita.ecommerce.domain.entity.MerchantEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="com.systemspecs.remita.ecommerce.domain.entity.promotion.PromotionType" v="true" name="category" ft="false" id="_1505895892594315">
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="startDate" ft="false" id="_1505895892594316">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="endDate" ft="false" id="_1505895892594317">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="description" ft="false" id="_1505895892594318">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="65535"/>
+                <jpa:lob/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895892033242" v="true" name="merchant" ft="false" id="_1505895892594319"/>
+        </jpa:attributes>
+        <jpa:inheritance strategy="JOINED"/>
+        <jpa:discriminator-column name="type" discriminator-type="STRING"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="PriceMatchPromisePK" abs="false" class="PriceMatchPromise" superclassId="_1505895892594314" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895892594313">
+        <jpa:attributes/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="SupplierPK" abs="false" class="Supplier" superclassId="_1505895892038244" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895892778320">
+        <jpa:attributes/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="FlashSalesPK" abs="false" class="FlashSales" superclassId="_1505895892594314" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895892823321">
+        <jpa:attributes/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="RemitaPaymentNotificationRequestPK" abs="false" class="RemitaPaymentNotificationRequest" superclassId="_1505895892880326" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895892862322">
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="requestId" ft="false" id="_1505895892862323"/>
+            <jpa:basic attribute-type="String" v="true" name="serviceTypeId" ft="false" id="_1505895892867325"/>
+            <jpa:one-to-many own="true" collection-type="java.util.List" connected-entity-id="_1505895893106344" v="true" name="paymentNotificationDetails" ft="false" id="_1505895892862324"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="UserWishListItemPK" abs="false" class="UserWishListItem" superclassId="_1505895892482310" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895892923331">
+        <jpa:inf e="true" n="com.systemspecs.remita.ecommerce.domain.entity.ProductEntity"/>
+        <jpa:attributes>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895891826212" v="true" name="product" ft="false" id="_1505895892923332"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="InventoryPK" abs="false" class="Inventory" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895892980333">
+        <jpa:inf e="true" n="com.systemspecs.remita.ecommerce.domain.entity.MerchantEntity"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.ecommerce.domain.entity.ProductEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="long" v="true" name="reorderLevel" ft="false" id="_1505895892980335"/>
+            <jpa:basic attribute-type="long" v="true" name="reorderQuantity" ft="false" id="_1505895892980336"/>
+            <jpa:basic attribute-type="double" v="true" name="averageMonthlyUsage" ft="false" id="_1505895892980337"/>
+            <jpa:basic attribute-type="long" v="true" name="quantityInStock" ft="false" id="_1505895892980338"/>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="stockTakingDate" ft="false" id="_1505895892980339">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895891826212" v="true" name="product" ft="false" id="_1505895892980334"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895892033242" v="true" name="merchant" ft="false" id="_1505895892980340"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ActivityCommentPK" abs="false" class="ActivityComment" superclassId="_1505895893038342" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895893038341">
+        <jpa:attributes/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="PaymentNotificationDetailPK" abs="false" class="PaymentNotificationDetail" superclassId="_1505895892880326" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895893106344">
+        <jpa:annotation e="true" n="@javax.annotation.Generated({&quot;org.jsonschema2pojo&quot;})"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="rrr" ft="false" id="_1505895893106345">
+                <jpa:an e="true" n="@com.google.gson.annotations.SerializedName(&quot;rrr&quot;)"/>
+                <jpa:an e="true" n="@com.google.gson.annotations.Expose"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="channnel" ft="false" id="_1505895893106346">
+                <jpa:an e="true" n="@com.google.gson.annotations.SerializedName(&quot;channnel&quot;)"/>
+                <jpa:an e="true" n="@com.google.gson.annotations.Expose"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="amount" ft="false" id="_1505895893106347">
+                <jpa:an e="true" n="@com.google.gson.annotations.SerializedName(&quot;amount&quot;)"/>
+                <jpa:an e="true" n="@com.google.gson.annotations.Expose"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="responseCode" ft="false" id="_1505895893106348">
+                <jpa:an e="true" n="@com.google.gson.annotations.SerializedName(&quot;responseCode&quot;)"/>
+                <jpa:an e="true" n="@com.google.gson.annotations.Expose"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="transactiondate" ft="false" id="_1505895893107349">
+                <jpa:an e="true" n="@com.google.gson.annotations.SerializedName(&quot;transactiondate&quot;)"/>
+                <jpa:an e="true" n="@com.google.gson.annotations.Expose"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="debitdate" ft="false" id="_1505895893107350">
+                <jpa:an e="true" n="@com.google.gson.annotations.SerializedName(&quot;debitdate&quot;)"/>
+                <jpa:an e="true" n="@com.google.gson.annotations.Expose"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="bank" ft="false" id="_1505895893107351">
+                <jpa:an e="true" n="@com.google.gson.annotations.SerializedName(&quot;bank&quot;)"/>
+                <jpa:an e="true" n="@com.google.gson.annotations.Expose"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="branch" ft="false" id="_1505895893107352">
+                <jpa:an e="true" n="@com.google.gson.annotations.SerializedName(&quot;branch&quot;)"/>
+                <jpa:an e="true" n="@com.google.gson.annotations.Expose"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="serviceTypeId" ft="false" id="_1505895893107353">
+                <jpa:an e="true" n="@com.google.gson.annotations.SerializedName(&quot;serviceTypeId&quot;)"/>
+                <jpa:an e="true" n="@com.google.gson.annotations.Expose"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="dateRequested" ft="false" id="_1505895893107354">
+                <jpa:an e="true" n="@com.google.gson.annotations.SerializedName(&quot;dateRequested&quot;)"/>
+                <jpa:an e="true" n="@com.google.gson.annotations.Expose"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="orderRef" ft="false" id="_1505895893107355">
+                <jpa:an e="true" n="@com.google.gson.annotations.SerializedName(&quot;orderRef&quot;)"/>
+                <jpa:an e="true" n="@com.google.gson.annotations.Expose"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="payerName" ft="false" id="_1505895893107356">
+                <jpa:an e="true" n="@com.google.gson.annotations.SerializedName(&quot;payerName&quot;)"/>
+                <jpa:an e="true" n="@com.google.gson.annotations.Expose"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="payerPhoneNumber" ft="false" id="_1505895893107357">
+                <jpa:an e="true" n="@com.google.gson.annotations.SerializedName(&quot;payerPhoneNumber&quot;)"/>
+                <jpa:an e="true" n="@com.google.gson.annotations.Expose"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="payerEmail" ft="false" id="_1505895893107358">
+                <jpa:an e="true" n="@com.google.gson.annotations.SerializedName(&quot;payerEmail&quot;)"/>
+                <jpa:an e="true" n="@com.google.gson.annotations.Expose"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="uniqueIdentifier" ft="false" id="_1505895893107359">
+                <jpa:an e="true" n="@com.google.gson.annotations.SerializedName(&quot;uniqueIdentifier&quot;)"/>
+                <jpa:an e="true" n="@com.google.gson.annotations.Expose"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="transType" ft="false" id="_1505895893107360">
+                <jpa:an e="true" n="@com.google.gson.annotations.SerializedName(&quot;transType&quot;)"/>
+                <jpa:an e="true" n="@com.google.gson.annotations.Expose"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="CustomerPK" abs="false" class="Customer" superclassId="_1505895892419283" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895893148361">
+        <jpa:inf e="true" n="com.systemspecs.remita.ecommerce.domain.entity.MerchantEntity"/>
+        <jpa:attributes>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895892033242" v="true" name="merchant" ft="false" id="_1505895893162366"/>
+            <jpa:one-to-many own="true" collection-type="java.util.List" connected-entity-id="_1505895895055555" v="true" name="coupons" ft="false" id="_1505895893162364">
+                <jpa:join-table name="customer_coupons"/>
+            </jpa:one-to-many>
+            <jpa:one-to-many own="true" collection-type="java.util.List" connected-entity-id="_1505895893448396" v="true" name="loyaltyPoints" ft="false" id="_1505895893162365">
+                <jpa:join-table name="customer_loyalty_points"/>
+            </jpa:one-to-many>
+            <jpa:element-collection collection-type="java.util.List" connected-class-id="_1505895892055259" v="true" name="shippingAddresses" ft="false" id="_1505895893148363">
+                <jpa:collection-table name="customer_shipping_addresses"/>
+            </jpa:element-collection>
+            <jpa:embedded connected-class-id="_1505895892055259" v="true" xvt="" name="billingAddress" ft="false" id="_1505895893148362">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+            </jpa:embedded>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="IndustrySectorPK" abs="false" class="IndustrySector" superclassId="_1505895893221371" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895893208367">
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_1505895893209368">
+                <jpa:column unique="true" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="code" ft="false" id="_1505895893209369">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_1505895893944444" connected-attribute-id="_1505895893944447" v="true" name="industryGroups" ft="false" id="_1505895893209370"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="NotificationPK" abs="false" class="Notification" superclassId="_1505895892482310" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895893264373">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="title" ft="false" id="_1505895893264374">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="details" ft="false" id="_1505895893264375">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="4000"/>
+                <jpa:lob/>
+            </jpa:basic>
+            <jpa:basic attribute-type="boolean" v="true" name="unread" ft="false" id="_1505895893264376">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="OrderDetailsPK" abs="false" class="OrderDetails" superclassId="_1505895892482310" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895893314377">
+        <jpa:inf e="true" n="com.systemspecs.remita.ecommerce.domain.entity.MerchantEntity"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.util.CollectionSupport"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="com.systemspecs.remita.ecommerce.domain.entity.OrderStatus" v="true" name="status" ft="false" id="_1505895893318379">
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="orderPlaced" ft="false" id="_1505895893318380">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="orderDelivered" ft="false" id="_1505895893318381">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="double" v="true" name="amount" ft="false" id="_1505895893318384">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="double" v="true" name="shippingCost" ft="false" id="_1505895893318385"/>
+            <jpa:basic attribute-type="double" v="true" name="vat" ft="false" id="_1505895893318386"/>
+            <jpa:basic attribute-type="String" v="true" name="trackingNumber" ft="false" id="_1505895893318387"/>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="statusUpdated" ft="false" id="_1505895893318388">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895894956550" v="true" name="shippingOption" ft="false" id="_1505895893318382"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895892542312" v="true" name="shipper" ft="false" id="_1505895893318389"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895892033242" v="true" name="merchant" ft="false" id="_1505895893318390"/>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_1505895891969235" connected-attribute-id="_1505895891969236" v="true" name="orderItems" ft="false" id="_1505895893314378"/>
+            <jpa:embedded connected-class-id="_1505895892055259" v="true" name="shippingAddress" ft="false" id="_1505895893318383"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ProductOptionGroupPK" abs="false" class="ProductOptionGroup" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895893379391">
+        <jpa:inf e="true" n="com.systemspecs.remita.ecommerce.domain.entity.ProductEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_1505895893379392">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="description" ft="false" id="_1505895893379393">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="65535"/>
+                <jpa:lob/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895891826212" v="true" name="product" ft="false" id="_1505895893379394"/>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_1505895895179565" connected-attribute-id="_1505895895179568" v="true" name="options" ft="false" id="_1505895893379395"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="LoyaltyPointPK" abs="false" class="LoyaltyPoint" superclassId="_1505895892594314" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895893448396">
+        <jpa:attributes>
+            <jpa:basic attribute-type="int" v="true" name="awardedPoints" ft="false" id="_1505895893448397"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="TagPK" abs="false" class="Tag" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895893496398">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.NamedEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_1505895893496399">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+        </jpa:attributes>
+        <jpa:table>
+            <jpa:index n="tag_name" u="true">
+                <jpa:c c="name"/>
+            </jpa:index>
+        </jpa:table>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ProductSupplyLogPK" abs="false" class="ProductSupplyLog" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895893551400">
+        <jpa:inf e="true" n="com.systemspecs.remita.ecommerce.domain.entity.MerchantEntity"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.ecommerce.domain.entity.ProductEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="double" v="true" name="unitPurchasePrice" ft="false" id="_1505895893551404"/>
+            <jpa:basic attribute-type="long" v="true" name="totalQuantitySupplied" ft="false" id="_1505895893551405"/>
+            <jpa:basic attribute-type="double" v="true" name="totalDiscount" ft="false" id="_1505895893551406"/>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="reorderDate" ft="false" id="_1505895893551407">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="deliveryDate" ft="false" id="_1505895893551408">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895891826212" v="true" name="product" ft="false" id="_1505895893551401"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895892778320" v="true" name="supplier" ft="false" id="_1505895893551402"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895892542312" v="true" name="shipper" ft="false" id="_1505895893551403"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895892033242" v="true" name="merchant" ft="false" id="_1505895893551409"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ActivityLogPK" abs="false" class="ActivityLog" superclassId="_1505895892880326" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895893626410">
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="companyId" ft="false" id="_1505895893627411"/>
+            <jpa:basic attribute-type="String" v="true" name="resourceId" ft="false" id="_1505895893627412"/>
+            <jpa:basic attribute-type="com.systemspecs.remita.ecommerce.domain.entity.core.ActivityLog.ActivityResult" v="true" name="activityResult" ft="false" id="_1505895893627413">
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="username" ft="false" id="_1505895893627414"/>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_1505895893627415"/>
+            <jpa:basic attribute-type="String" v="true" name="clientIp" ft="false" id="_1505895893627416"/>
+            <jpa:basic attribute-type="Boolean" v="true" name="guest" ft="false" id="_1505895893627417"/>
+            <jpa:basic attribute-type="String" v="true" name="referrer" ft="false" id="_1505895893627418"/>
+            <jpa:basic attribute-type="String" v="true" name="requestIp" ft="false" id="_1505895893627419"/>
+            <jpa:basic attribute-type="String" v="true" name="activity" ft="false" id="_1505895893627420">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="65535"/>
+                <jpa:lob/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="relatedItemType" ft="false" id="_1505895893627421"/>
+            <jpa:basic attribute-type="long" v="true" name="relatedItemId" ft="false" id="_1505895893627422"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ContactOpportunityPK" abs="false" class="ContactOpportunity" superclassId="_1505895892209276" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895893675423">
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="description" ft="false" id="_1505895893675424">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="2000"/>
+                <jpa:lob/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="GiveAwayPK" abs="false" class="GiveAway" superclassId="_1505895892594314" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895893730425">
+        <jpa:attributes>
+            <jpa:element-collection collection-type="java.util.Set" connected-class-id="_1505895893752427" v="true" name="giveaways" ft="false" id="_1505895893730426"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ProductAttributePK" abs="false" class="ProductAttribute" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895893802433">
+        <jpa:inf e="true" n="com.systemspecs.remita.ecommerce.domain.entity.ProductEntity"/>
+        <jpa:attributes>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895891826212" v="true" name="product" ft="false" id="_1505895893802434"/>
+        </jpa:attributes>
+        <jpa:inheritance strategy="JOINED"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="CommodityDetailsPK" abs="false" class="CommodityDetails" superclassId="_1505895893802433" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895893801430">
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="brand" ft="false" id="_1505895893801431">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="warranty" ft="false" id="_1505895893802432"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="TaskCategoryPK" abs="false" class="TaskCategory" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895893847435">
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.NamedEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_1505895893847436">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_1505895894471506" connected-attribute-id="_1505895894475516" v="true" name="tasks" ft="false" id="_1505895893847437"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="RemitaPaymentNotificationResponsePK" abs="false" class="RemitaPaymentNotificationResponse" superclassId="_1505895893903440" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895893903438">
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="requestId" ft="false" id="_1505895893903439"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="IndustryGroupPK" abs="false" class="IndustryGroup" superclassId="_1505895893221371" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895893944444">
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_1505895893944445">
+                <jpa:column unique="true" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="code" ft="false" id="_1505895893944446">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895893208367" connected-attribute-id="_1505895893209370" v="true" name="sector" ft="false" id="_1505895893944447"/>
+            <jpa:transient attribute-type="Long" v="true" name="parentId" ft="false" id="_1505895893944448"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="CartPK" abs="false" class="Cart" superclassId="_1505895892482310" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895893994449">
+        <jpa:inf e="true" n="com.systemspecs.remita.util.CollectionSupport"/>
+        <jpa:attributes>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_1505895894658535" connected-attribute-id="_1505895894658538" v="true" name="items" ft="false" id="_1505895893994450"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="FreeReturnsPK" abs="false" class="FreeReturns" superclassId="_1505895892594314" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895894048451">
+        <jpa:attributes>
+            <jpa:basic attribute-type="int" v="true" name="validityWindow" ft="false" id="_1505895894048452"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="UserActivityLogPK" abs="false" class="UserActivityLog" superclassId="_1505895892482303" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895894092453">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="com.systemspecs.remita.domain.entity.security.audit.AuditAction" v="true" name="action" ft="false" id="_1505895894092454">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="details" ft="false" id="_1505895894093455">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="65535"/>
+                <jpa:lob/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ProductSupplierProfilePK" abs="false" class="ProductSupplierProfile" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895894135456">
+        <jpa:inf e="true" n="com.systemspecs.remita.ecommerce.domain.entity.MerchantEntity"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.ecommerce.domain.entity.ProductEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="supplyDate" ft="false" id="_1505895894135459">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="long" v="true" name="totalQuantitySuppliedToDate" ft="false" id="_1505895894135460"/>
+            <jpa:basic attribute-type="double" v="true" name="valueSuppliedToDate" ft="false" id="_1505895894135461"/>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="firstItemSuppliedDate" ft="false" id="_1505895894135462">
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="lastItemSuppliedDate" ft="false" id="_1505895894135463">
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="long" v="true" name="deliveryLeadTime" ft="false" id="_1505895894135464"/>
+            <jpa:basic attribute-type="double" v="true" name="standardPrice" ft="false" id="_1505895894135465"/>
+            <jpa:basic attribute-type="double" v="true" name="percentageDiscount" ft="false" id="_1505895894135466"/>
+            <jpa:basic attribute-type="long" v="true" name="mininumOrderQuantity" ft="false" id="_1505895894135467"/>
+            <jpa:basic attribute-type="long" v="true" name="maximumOrderQuantity" ft="false" id="_1505895894135468"/>
+            <jpa:basic attribute-type="String" v="true" name="details" ft="false" id="_1505895894135469">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="65535"/>
+                <jpa:lob/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895891826212" v="true" name="product" ft="false" id="_1505895894135457"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895892778320" v="true" name="supplier" ft="false" id="_1505895894135458"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895892033242" v="true" name="merchant" ft="false" id="_1505895894135470"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ContactPK" abs="false" class="Contact" superclassId="_1505895894241485" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895894228471">
+        <jpa:inf e="true" n="com.systemspecs.remita.util.CollectionSupport"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="title" ft="false" id="_1505895894228472"/>
+            <jpa:basic attribute-type="String" v="true" name="surname" ft="false" id="_1505895894228473">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="firstName" ft="false" id="_1505895894228474">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="middleNames" ft="false" id="_1505895894228475"/>
+            <jpa:basic attribute-type="String" v="true" name="suffix" ft="false" id="_1505895894228476"/>
+            <jpa:basic attribute-type="com.systemspecs.remita.domain.entity.Gender" v="true" name="gender" ft="false" id="_1505895894228477">
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="com.systemspecs.remita.domain.entity.MaritalStatus" v="true" name="maritalStatus" ft="false" id="_1505895894228478">
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="com.systemspecs.remita.domain.entity.Religion" v="true" name="religion" ft="false" id="_1505895894228479">
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="com.systemspecs.remita.domain.entity.AgeBracket" v="true" name="ageBracket" ft="false" id="_1505895894228480">
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="email" ft="false" id="_1505895894236482">
+                <jpa:column unique="true" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="website" ft="false" id="_1505895894236483"/>
+            <jpa:element-collection fetch="LAZY" collection-type="java.util.Set" connected-class-id="_1505895892050252" v="true" name="phoneNumbers" ft="false" id="_1505895894228481"/>
+            <jpa:element-collection fetch="LAZY" collection-type="java.util.Set" connected-class-id="_1505895892055259" v="true" name="addresses" ft="false" id="_1505895894236484"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="CommodityPK" abs="false" class="Commodity" superclassId="_1505895891826212" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895894333487">
+        <jpa:attributes>
+            <jpa:basic attribute-type="int" v="true" name="quantityPerUnit" ft="false" id="_1505895894370494"/>
+            <jpa:basic attribute-type="double" v="true" name="unitWeight" ft="false" id="_1505895894370495"/>
+            <jpa:basic attribute-type="String" v="true" name="barCode" ft="false" id="_1505895894370496"/>
+            <jpa:one-to-many own="true" collection-type="java.util.List" connected-entity-id="_1505895894956550" v="true" name="shippingOptions" ft="false" id="_1505895894366493">
+                <jpa:join-table name="product_shipping_options"/>
+            </jpa:one-to-many>
+            <jpa:embedded connected-class-id="_1505895894366489" v="true" name="availability" ft="false" id="_1505895894333488"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ProductCategoryPK" abs="false" class="ProductCategory" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895894420497">
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.NamedEntity"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.ecommerce.domain.entity.MerchantEntity"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.util.CollectionSupport"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_1505895894420498">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="description" ft="false" id="_1505895894420499">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="65535"/>
+                <jpa:lob/>
+            </jpa:basic>
+            <jpa:basic attribute-type="boolean" v="true" name="system" ft="false" id="_1505895894420500">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="iconClass" ft="false" id="_1505895894427505"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895894420497" connected-attribute-id="_1505895894420502" v="true" name="parentCategory" ft="false" id="_1505895894420501"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895892033242" v="true" name="merchant" ft="false" id="_1505895894427504"/>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_1505895894420497" connected-attribute-id="_1505895894420501" v="true" name="subCategories" ft="false" id="_1505895894420502"/>
+            <jpa:element-collection target-class="java.lang.String" collection-type="java.util.Set" v="true" name="tags" ft="false" id="_1505895894424503">
+                <jpa:collection-table name="product_category_tags"/>
+            </jpa:element-collection>
+        </jpa:attributes>
+        <jpa:table>
+            <jpa:index n="idx_product_category_names">
+                <jpa:c c="name"/>
+            </jpa:index>
+        </jpa:table>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="TaskPK" abs="false" class="Task" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895894471506">
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.NamedEntity"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.util.CollectionSupport"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_1505895894471507">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="description" ft="false" id="_1505895894471508">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="65535"/>
+                <jpa:lob/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="startDate" ft="false" id="_1505895894471509">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="dueDate" ft="false" id="_1505895894471510">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="double" v="true" name="percentageComplete" ft="false" id="_1505895894471512"/>
+            <jpa:basic attribute-type="int" v="true" name="priority" ft="false" id="_1505895894475514"/>
+            <jpa:basic attribute-type="com.systemspecs.remita.domain.entity.TaskStatus" v="true" name="status" ft="false" id="_1505895894475515">
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895892419283" v="true" name="assignedTo" ft="false" id="_1505895894471511"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895893847435" connected-attribute-id="_1505895893847437" v="true" name="category" ft="false" id="_1505895894475516"/>
+            <jpa:one-to-many own="true" collection-type="java.util.List" connected-entity-id="_1505895894471506" v="true" name="predecessors" ft="false" id="_1505895894471513"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ProductReviewPK" abs="false" class="ProductReview" superclassId="_1505895894574522" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895894563517">
+        <jpa:inf e="true" n="com.systemspecs.remita.ecommerce.domain.entity.ProductEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="double" v="true" name="priceRating" ft="false" id="_1505895894563519"/>
+            <jpa:basic attribute-type="double" v="true" name="qualityRating" ft="false" id="_1505895894563520"/>
+            <jpa:basic attribute-type="double" v="true" name="valueRating" ft="false" id="_1505895894563521"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895891826212" connected-attribute-id="_1505895891840223" v="true" name="product" ft="false" id="_1505895894563518"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="MimeResourcePK" abs="false" class="MimeResource" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895894612527">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.NamedEntity"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.TitledEntity"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.util.CollectionSupport"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="title" ft="false" id="_1505895894612528">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_1505895894612529">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="description" ft="false" id="_1505895894612530">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="65535"/>
+                <jpa:lob/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="publicUri" ft="false" id="_1505895894613531">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="mimeType" ft="false" id="_1505895894613532">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="locale" ft="false" id="_1505895894613533"/>
+            <jpa:one-to-many own="true" collection-type="java.util.Set" connected-entity-id="_1505895893496398" v="true" name="tags" ft="false" id="_1505895894613534"/>
+        </jpa:attributes>
+        <jpa:inheritance strategy="JOINED"/>
+        <jpa:discriminator-column name="type" discriminator-type="STRING"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="CartItemPK" abs="false" class="CartItem" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895894658535">
+        <jpa:inf e="true" n="com.systemspecs.remita.ecommerce.domain.entity.ProductEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="int" v="true" name="quantity" ft="false" id="_1505895894658537">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895891826212" v="true" name="product" ft="false" id="_1505895894658536"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895893994449" connected-attribute-id="_1505895893994450" v="true" name="cart" ft="false" id="_1505895894658538"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="DiscountPK" abs="false" class="Discount" superclassId="_1505895892594314" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895894714539">
+        <jpa:attributes>
+            <jpa:basic attribute-type="com.systemspecs.remita.ecommerce.domain.entity.promotion.DiscountType" v="true" name="discountType" ft="false" id="_1505895894714540">
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="double" v="true" name="discountValue" ft="false" id="_1505895894714541">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="FreeShippingPK" abs="false" class="FreeShipping" superclassId="_1505895892594314" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895894801542">
+        <jpa:attributes>
+            <jpa:basic attribute-type="double" v="true" name="minimumPurchaseAmount" ft="false" id="_1505895894801543"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="CurrencyPK" abs="false" class="Currency" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895894883544">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.NamedEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_1505895894884545">
+                <jpa:column unique="true" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="symbol" ft="false" id="_1505895894884546"/>
+            <jpa:basic attribute-type="String" v="true" name="code" ft="false" id="_1505895894884547"/>
+            <jpa:basic attribute-type="String" v="true" name="fractionalUnit" ft="false" id="_1505895894884548"/>
+            <jpa:basic attribute-type="int" v="true" name="decimalDigits" ft="false" id="_1505895894884549"/>
+        </jpa:attributes>
+        <jpa:table>
+            <jpa:index n="idx_currency_name">
+                <jpa:c c="name"/>
+            </jpa:index>
+        </jpa:table>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ShippingOptionPK" abs="false" class="ShippingOption" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895894956550">
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_1505895894956551">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="SecurityQuestionPK" abs="false" class="SecurityQuestion" superclassId="_1505895892482310" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895895007552">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.NamedEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_1505895895007553">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="value" ft="false" id="_1505895895007554">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="CouponPK" abs="false" class="Coupon" superclassId="_1505895892594314" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895895055555">
+        <jpa:attributes>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="issueDate" ft="false" id="_1505895895055557">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="expiryDate" ft="false" id="_1505895895055558">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="barCode" ft="false" id="_1505895895055559"/>
+            <jpa:basic attribute-type="String" v="true" xvt="" name="description_coupon_awo" ft="false" id="_1505895895056560">
+                <jpa:xwm nil="false" req="false"/>
+                <jpa:xm nil="false" req="false"/>
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="400"/>
+                <jpa:lob/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895892594314" v="true" name="faceValue" ft="false" id="_1505895895055556"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="FileResourcePK" abs="false" class="FileResource" superclassId="_1505895894612527" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895895092561">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="fileName" ft="false" id="_1505895895092563">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895891741198" v="true" name="parentFolder" ft="false" id="_1505895895092562"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="BuyMoreSaveMorePK" abs="false" class="BuyMoreSaveMore" superclassId="_1505895892594314" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895895139564">
+        <jpa:attributes/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ProductOptionPK" abs="false" class="ProductOption" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895895179565">
+        <jpa:inf e="true" n="com.systemspecs.remita.ecommerce.domain.entity.ProductEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="double" v="true" name="optionPriceIncrement" ft="false" id="_1505895895179567"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895891826212" connected-attribute-id="_1505895891845226" v="true" name="product" ft="false" id="_1505895895179566"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895893379391" connected-attribute-id="_1505895893379395" v="true" name="optionGroup" ft="false" id="_1505895895179568"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="CountryPK" abs="false" class="Country" superclassId="_1505895891741201" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895895223569">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.NamedEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_1505895895223570">
+                <jpa:column unique="true" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="demonym" ft="false" id="_1505895895227578"/>
+            <jpa:basic attribute-type="String" v="true" name="commonName" ft="false" id="_1505895895227579">
+                <jpa:column unique="true" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="region" ft="false" id="_1505895895227581"/>
+            <jpa:basic attribute-type="String" v="true" name="subRegion" ft="false" id="_1505895895227582"/>
+            <jpa:basic attribute-type="String" v="true" name="capital" ft="false" id="_1505895895227583"/>
+            <jpa:one-to-many own="true" collection-type="java.util.List" connected-entity-id="_1505895894883544" v="true" name="currencies" ft="false" id="_1505895895224577"/>
+            <jpa:element-collection target-class="java.lang.String" collection-type="java.util.Set" v="true" name="callingCodes" ft="false" id="_1505895895227580"/>
+            <jpa:embedded connected-class-id="_1505895895224572" v="true" name="code" ft="false" id="_1505895895223571"/>
+        </jpa:attributes>
+        <jpa:table>
+            <jpa:index n="idx_country_name">
+                <jpa:c c="name"/>
+            </jpa:index>
+        </jpa:table>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="MimeResourcePK" abs="false" class="MimeResource" superclassId="_150589580241158" v="true" xre="false" m="false" rootElement="_15058931426511" id="_150589580239550">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.NamedEntity"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.TitledEntity"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.util.CollectionSupport"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="title" ft="false" id="_150589580239751">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_150589580239752">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="description" ft="false" id="_150589580239753">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="65535"/>
+                <jpa:lob/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="publicUri" ft="false" id="_150589580239754">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="mimeType" ft="false" id="_150589580239855">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="locale" ft="false" id="_150589580239856"/>
+            <jpa:one-to-many own="true" collection-type="java.util.Set" connected-entity-id="_150589580290699" v="true" name="tags" ft="false" id="_150589580239857"/>
+        </jpa:attributes>
+        <jpa:inheritance strategy="JOINED"/>
+        <jpa:discriminator-column name="type" discriminator-type="STRING"/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="ResourceFolderPK" abs="false" class="ResourceFolder" superclassId="_150589580241158" v="true" xre="false" m="false" rootElement="_15058931426511" id="_150589580249168">
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.NamedEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_150589580249269">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="filePath" ft="false" id="_150589580249270">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="TaskCategoryPK" abs="false" class="TaskCategory" superclassId="_150589580241158" v="true" xre="false" m="false" rootElement="_15058931426511" id="_150589580253371">
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.NamedEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_150589580253372">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:one-to-many own="false" collection-type="java.util.List" connected-entity-id="_1505895803172120" connected-attribute-id="_1505895803177130" v="true" name="tasks" ft="false" id="_150589580253373"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="AbstractAuditLogPK" abs="false" class="AbstractAuditLog" superclassId="_150589580259981" v="true" xre="false" m="false" rootElement="_15058931426511" id="_150589580259874">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="resourceUri" ft="false" id="_150589580259875">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="eventTimestamp" ft="false" id="_150589580259876">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="userIpAddress" ft="false" id="_150589580259877">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="userLocation" ft="false" id="_150589580259978"/>
+            <jpa:basic attribute-type="String" v="true" name="userDevice" ft="false" id="_150589580259979"/>
+            <jpa:basic attribute-type="String" v="true" name="userRoles" ft="false" id="_150589580259980">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="CurrencyPK" abs="false" class="Currency" superclassId="_150589580241158" v="true" xre="false" m="false" rootElement="_15058931426511" id="_150589580265683">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.NamedEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_150589580265684">
+                <jpa:column unique="true" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="symbol" ft="false" id="_150589580265685"/>
+            <jpa:basic attribute-type="String" v="true" name="code" ft="false" id="_150589580265686"/>
+            <jpa:basic attribute-type="String" v="true" name="fractionalUnit" ft="false" id="_150589580265687"/>
+            <jpa:basic attribute-type="int" v="true" name="decimalDigits" ft="false" id="_150589580265688"/>
+        </jpa:attributes>
+        <jpa:table>
+            <jpa:index n="idx_currency_name">
+                <jpa:c c="name"/>
+            </jpa:index>
+        </jpa:table>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="NotificationPK" abs="false" class="Notification" superclassId="_150589580259981" v="true" xre="false" m="false" rootElement="_15058931426511" id="_150589580272989">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="title" ft="false" id="_150589580272990">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="details" ft="false" id="_150589580272991">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="4000"/>
+                <jpa:lob/>
+            </jpa:basic>
+            <jpa:basic attribute-type="boolean" v="true" name="unread" ft="false" id="_150589580272992">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="SecurityQuestionPK" abs="false" class="SecurityQuestion" superclassId="_150589580259981" v="true" xre="false" m="false" rootElement="_15058931426511" id="_150589580279793">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.NamedEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_150589580279794">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="value" ft="false" id="_150589580279795">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="UserActivityLogPK" abs="false" class="UserActivityLog" superclassId="_150589580259874" v="true" xre="false" m="false" rootElement="_15058931426511" id="_150589580285796">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="com.systemspecs.remita.domain.entity.security.audit.AuditAction" v="true" name="action" ft="false" id="_150589580285797">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="details" ft="false" id="_150589580285898">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="65535"/>
+                <jpa:lob/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="TagPK" abs="false" class="Tag" superclassId="_150589580241158" v="true" xre="false" m="false" rootElement="_15058931426511" id="_150589580290699">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.NamedEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_1505895802906100">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+        </jpa:attributes>
+        <jpa:table>
+            <jpa:index n="tag_name" u="true">
+                <jpa:c c="name"/>
+            </jpa:index>
+        </jpa:table>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="FileResourcePK" abs="false" class="FileResource" superclassId="_150589580239550" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895802948101">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="fileName" ft="false" id="_1505895802948103">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_150589580249168" v="true" name="parentFolder" ft="false" id="_1505895802948102"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="UserAccessLogPK" abs="false" class="UserAccessLog" superclassId="_150589580259874" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895803024104">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:attributes/>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="CountryPK" abs="false" class="Country" superclassId="_150589580241158" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895803104105">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.NamedEntity"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_1505895803104106">
+                <jpa:column unique="true" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="demonym" ft="false" id="_1505895803130114"/>
+            <jpa:basic attribute-type="String" v="true" name="commonName" ft="false" id="_1505895803130115">
+                <jpa:column unique="true" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="region" ft="false" id="_1505895803130117"/>
+            <jpa:basic attribute-type="String" v="true" name="subRegion" ft="false" id="_1505895803130118"/>
+            <jpa:basic attribute-type="String" v="true" name="capital" ft="false" id="_1505895803130119"/>
+            <jpa:one-to-many own="true" collection-type="java.util.List" connected-entity-id="_150589580265683" v="true" name="currencies" ft="false" id="_1505895803120113"/>
+            <jpa:element-collection target-class="java.lang.String" collection-type="java.util.Set" v="true" name="callingCodes" ft="false" id="_1505895803130116"/>
+            <jpa:embedded connected-class-id="_1505895803119108" v="true" name="code" ft="false" id="_1505895803104107"/>
+        </jpa:attributes>
+        <jpa:table>
+            <jpa:index n="idx_country_name">
+                <jpa:c c="name"/>
+            </jpa:index>
+        </jpa:table>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="TaskPK" abs="false" class="Task" superclassId="_150589580241158" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895803172120">
+        <jpa:inf e="true" n="com.systemspecs.remita.domain.entity.NamedEntity"/>
+        <jpa:inf e="true" n="com.systemspecs.remita.util.CollectionSupport"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="name" ft="false" id="_1505895803172121">
+                <jpa:column unique="false" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="description" ft="false" id="_1505895803172122">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="65535"/>
+                <jpa:lob/>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="startDate" ft="false" id="_1505895803173123">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="dueDate" ft="false" id="_1505895803173124">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="double" v="true" name="percentageComplete" ft="false" id="_1505895803173126"/>
+            <jpa:basic attribute-type="int" v="true" name="priority" ft="false" id="_1505895803177128"/>
+            <jpa:basic attribute-type="com.systemspecs.remita.domain.entity.TaskStatus" v="true" name="status" ft="false" id="_1505895803177129">
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895803270131" v="true" name="assignedTo" ft="false" id="_1505895803173125"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_150589580253371" connected-attribute-id="_150589580253373" v="true" name="category" ft="false" id="_1505895803177130"/>
+            <jpa:one-to-many own="true" collection-type="java.util.List" connected-entity-id="_1505895803172120" v="true" name="predecessors" ft="false" id="_1505895803173127"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity compositePrimaryKeyClass="UserPK" abs="false" class="User" superclassId="_150589580241158" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895803270131">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:inf e="true" n="org.springframework.security.core.userdetails.UserDetails"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="username" ft="false" id="_1505895803274133">
+                <jpa:column unique="true" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="password" ft="false" id="_1505895803274134"/>
+            <jpa:basic attribute-type="String" v="true" name="email" ft="false" id="_1505895803274135">
+                <jpa:column unique="true" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="com.systemspecs.remita.domain.entity.security.core.UserAccessStatus" v="true" name="accessStatus" ft="false" id="_1505895803274137">
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="credentialExpiryDate" ft="false" id="_1505895803274138">
+                <jpa:temporal>TIMESTAMP</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="gravatarUrl" ft="false" id="_1505895803274139"/>
+            <jpa:basic attribute-type="boolean" v="true" name="emailVerified" ft="false" id="_1505895803274140"/>
+            <jpa:basic attribute-type="String" v="true" name="emailVerificationCode" ft="false" id="_1505895803274141"/>
+            <jpa:basic attribute-type="String" v="true" name="surname" ft="false" id="_1505895803275142"/>
+            <jpa:basic attribute-type="String" v="true" name="firstName" ft="false" id="_1505895803275143"/>
+            <jpa:basic attribute-type="String" v="true" name="thumbnailUri" ft="false" id="_1505895803275145"/>
+            <jpa:basic attribute-type="com.systemspecs.remita.domain.entity.Gender" v="true" name="gender" ft="false" id="_1505895803275146">
+                <jpa:enumerated>STRING</jpa:enumerated>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="title" ft="false" id="_1505895803275147"/>
+            <jpa:basic attribute-type="String" v="true" name="middleNames" ft="false" id="_1505895803275148"/>
+            <jpa:basic attribute-type="String" v="true" name="suffix" ft="false" id="_1505895803275149"/>
+            <jpa:element-collection target-class="java.lang.String" fetch="EAGER" collection-type="java.util.Set" v="true" name="roles" ft="false" id="_1505895803274136">
+                <jpa:collection-table name="user_roles"/>
+            </jpa:element-collection>
+            <jpa:element-collection target-class="java.lang.String" fetch="LAZY" collection-type="java.util.Set" v="true" name="phoneNumbers" ft="false" id="_1505895803275144">
+                <jpa:collection-table name="user_phone_numbers">
+                    <jpa:join-column name="user_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                </jpa:collection-table>
+            </jpa:element-collection>
+        </jpa:attributes>
+        <jpa:table>
+            <jpa:index n="idx_users_username" u="true">
+                <jpa:c c="username"/>
+            </jpa:index>
+            <jpa:index n="idx_users_email" u="true">
+                <jpa:c c="email"/>
+            </jpa:index>
+        </jpa:table>
+    </jpa:entity>
+    <jpa:embeddable abs="false" class="ReviewStatistics" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895891840220">
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="double" v="true" name="averageRating" ft="false" id="_1505895891840221"/>
+            <jpa:basic attribute-type="long" v="true" name="reviewCount" ft="false" id="_1505895891840222"/>
+        </jpa:attributes>
+    </jpa:embeddable>
+    <jpa:embeddable abs="false" class="PhoneNumber" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895892050252">
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="com.systemspecs.remita.domain.entity.PhoneNumberType" v="true" name="type" ft="false" id="_1505895892050253"/>
+            <jpa:basic attribute-type="String" v="true" name="areaCode" ft="false" id="_1505895892050254"/>
+            <jpa:basic attribute-type="String" v="true" name="phoneNumber" ft="false" id="_1505895892050255"/>
+            <jpa:basic attribute-type="boolean" v="true" name="preferred" ft="false" id="_1505895892050256"/>
+        </jpa:attributes>
+    </jpa:embeddable>
+    <jpa:embeddable abs="false" class="Address" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895892055259">
+        <jpa:annotation e="true" n="@java.lang.SuppressWarnings({&quot;serial&quot;})"/>
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="streetAddress" ft="false" id="_1505895892055260"/>
+            <jpa:basic attribute-type="String" v="true" name="city" ft="false" id="_1505895892055261"/>
+            <jpa:basic attribute-type="String" v="true" name="state" ft="false" id="_1505895892055262"/>
+            <jpa:basic attribute-type="String" v="true" name="region" ft="false" id="_1505895892055263"/>
+            <jpa:basic attribute-type="String" v="true" name="postalCode" ft="false" id="_1505895892055265"/>
+            <jpa:basic attribute-type="com.systemspecs.remita.domain.entity.AddressType" v="true" name="type" ft="false" id="_1505895892055266"/>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="activeAsFrom" ft="false" id="_1505895892055267">
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic attribute-type="java.util.Date" v="true" name="activeUntil" ft="false" id="_1505895892055268">
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895895223569" v="true" name="country" ft="false" id="_1505895892055264"/>
+        </jpa:attributes>
+    </jpa:embeddable>
+    <jpa:embeddable abs="false" class="GiveAwayItem" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895893752427">
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="int" v="true" name="quantiy" ft="false" id="_1505895893752429"/>
+            <jpa:many-to-one primaryKey="false" connected-entity-id="_1505895891826212" v="true" name="product" ft="false" id="_1505895893752428"/>
+        </jpa:attributes>
+    </jpa:embeddable>
+    <jpa:embeddable abs="false" class="ProductAvailability" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895894366489">
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="long" v="true" name="unitsInStock" ft="false" id="_1505895894366490"/>
+            <jpa:basic attribute-type="long" v="true" name="unitsOnOrder" ft="false" id="_1505895894366491"/>
+            <jpa:basic attribute-type="long" v="true" name="reorderLevel" ft="false" id="_1505895894366492"/>
+        </jpa:attributes>
+    </jpa:embeddable>
+    <jpa:embeddable abs="false" class="CountryCode" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895895224572">
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="cca2Code" ft="false" id="_1505895895224573">
+                <jpa:column unique="true" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="cca3Code" ft="false" id="_1505895895224574">
+                <jpa:column unique="true" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="ccn3Code" ft="false" id="_1505895895224575"/>
+            <jpa:basic attribute-type="String" v="true" name="ciocCode" ft="false" id="_1505895895224576"/>
+        </jpa:attributes>
+    </jpa:embeddable>
+    <jpa:embeddable abs="false" class="CountryCode" v="true" xre="false" m="false" rootElement="_15058931426511" id="_1505895803119108">
+        <jpa:inf e="true" n="java.io.Serializable"/>
+        <jpa:attributes>
+            <jpa:basic attribute-type="String" v="true" name="cca2Code" ft="false" id="_1505895803120109">
+                <jpa:column unique="true" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="cca3Code" ft="false" id="_1505895803120110">
+                <jpa:column unique="true" nullable="false" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic attribute-type="String" v="true" name="ccn3Code" ft="false" id="_1505895803120111"/>
+            <jpa:basic attribute-type="String" v="true" name="ciocCode" ft="false" id="_1505895803120112"/>
+        </jpa:attributes>
+    </jpa:embeddable>
+    <jpa:snp loc="BEFORE_PACKAGE" e="true">/**
+ * This file was generated by the Jeddict
+ */</jpa:snp>
+    <jpa:wsl>
+        <jpa:ws n="Main" id="_15058931426522">
+            <i ref="_1505895891840220" x="3363" y="3686"/>
+            <i ref="_1505895892778320" x="280" y="3286"/>
+            <i ref="_1505895893148361" x="1949" y="347"/>
+            <i ref="_1505895893752427" x="2712" y="3686"/>
+            <i ref="_1505895803270131" x="4283" y="1027"/>
+            <i ref="_1505895892542312" x="823" y="347"/>
+            <i ref="_1505895894563517" x="2187" y="3686"/>
+            <i ref="_1505895895007552" x="2462" y="347"/>
+            <i ref="_1505895892209276" x="542" y="569"/>
+            <i ref="_150589580241260" x="4283" y="2457"/>
+            <i ref="_1505895893551400" x="1069" y="569"/>
+            <i ref="_150589580241665" x="4597" y="2878"/>
+            <i ref="_1505895891893230" x="1374" y="2457"/>
+            <i ref="_150589580285796" x="5837" y="1825"/>
+            <i ref="_1505895803024104" x="5837" y="2457"/>
+            <i ref="_1505895894135456" x="542" y="2878"/>
+            <i ref="_1505895895179565" x="823" y="2457"/>
+            <i ref="_150589580279793" x="5336" y="1825"/>
+            <i ref="_1505895895055555" x="3628" y="1825"/>
+            <i ref="_150589580259981" x="5077" y="2141"/>
+            <i ref="_1505895893847435" x="1069" y="2141"/>
+            <i ref="_1505895893264373" x="2712" y="569"/>
+            <i ref="_1505895893801430" x="280" y="1825"/>
+            <i ref="_1505895893038342" x="2187" y="120"/>
+            <i ref="_1505895893038341" x="32" y="569"/>
+            <i ref="_1505895891743208" x="2712" y="2878"/>
+            <i ref="_1505895894883544" x="1949" y="1027"/>
+            <i ref="_1505895892594314" x="2462" y="1825"/>
+            <i ref="_1505895892980333" x="823" y="1825"/>
+            <i ref="_1505895892033242" x="823" y="3286"/>
+            <i ref="_1505895892594313" x="3363" y="2878"/>
+            <i ref="_1505895893448396" x="3628" y="2457"/>
+            <i ref="_1505895893994449" x="2462" y="1027"/>
+            <i ref="_1505895894092453" x="3010" y="347"/>
+            <i ref="_150589580265683" x="3920" y="2141"/>
+            <i ref="_150589580239550" x="4839" y="2457"/>
+            <i ref="_1505895893903438" x="3920" y="4696"/>
+            <i ref="_1505895891742203" x="2187" y="2878"/>
+            <i ref="_1505895892419283" x="1688" y="569"/>
+            <i ref="_1505895893379391" x="2187" y="2141"/>
+            <i ref="_1505895894333487" x="1949" y="3286"/>
+            <i ref="_1505895891741198" x="1688" y="2141"/>
+            <i ref="_1505895893496398" x="1688" y="1485"/>
+            <i ref="_1505895892880326" x="3010" y="3884"/>
+            <i ref="_1505895894612527" x="1374" y="1027"/>
+            <i ref="_1505895893626410" x="3363" y="4082"/>
+            <i ref="_1505895895092561" x="2462" y="3286"/>
+            <i ref="_1505895802948101" x="5077" y="2878"/>
+            <i ref="_1505895893903440" x="3628" y="4519"/>
+            <i ref="_1505895894048451" x="3363" y="569"/>
+            <i ref="_1505895892400279" x="1374" y="347"/>
+            <i ref="_1505895894658535" x="1949" y="1825"/>
+            <i ref="_1505895893675423" x="280" y="1027"/>
+            <i ref="_1505895894471506" x="542" y="1485"/>
+            <i ref="_1505895894956550" x="1949" y="2457"/>
+            <i ref="_1505895892038244" x="2187" y="1485"/>
+            <i ref="_1505895892482302" x="2462" y="32"/>
+            <i ref="_1505895892862322" x="3010" y="4519"/>
+            <i ref="_1505895894228471" x="280" y="2457"/>
+            <i ref="_150589580249168" x="4597" y="2141"/>
+            <i ref="_1505895891969235" x="1688" y="2878"/>
+            <i ref="_1505895891741201" x="1374" y="1825"/>
+            <i ref="_1505895803172120" x="4839" y="1027"/>
+            <i ref="_1505895893106344" x="2712" y="4082"/>
+            <i ref="_1505895894714539" x="3010" y="2457"/>
+            <i ref="_1505895894241485" x="1069" y="1485"/>
+            <i ref="_1505895891825211" x="3010" y="3286"/>
+            <i ref="_1505895893314377" x="1374" y="3286"/>
+            <i ref="_1505895894801542" x="3363" y="1485"/>
+            <i ref="_150589580272989" x="5336" y="2457"/>
+            <i ref="_1505895892923331" x="2712" y="1485"/>
+            <i ref="_1505895893208367" x="3628" y="1027"/>
+            <i ref="_1505895892055259" x="32" y="2141"/>
+            <i ref="_150589580290699" x="3920" y="1485"/>
+            <i ref="_1505895892482303" x="2712" y="120"/>
+            <i ref="_1505895893730425" x="3628" y="3286"/>
+            <i ref="_1505895894366489" x="1688" y="3686"/>
+            <i ref="_1505895893944444" x="3010" y="1825"/>
+            <i ref="_1505895895224572" x="32" y="2878"/>
+            <i ref="_1505895892482310" x="2187" y="569"/>
+            <i ref="_1505895895139564" x="3010" y="1027"/>
+            <i ref="_1505895894574522" x="1688" y="120"/>
+            <i ref="_1505895892204270" x="280" y="347"/>
+            <i ref="_1505895894420497" x="1069" y="2878"/>
+            <i ref="_1505895892823321" x="3363" y="2141"/>
+            <i ref="_1505895803104105" x="4839" y="1825"/>
+            <i ref="_150589580241158" x="4283" y="1825"/>
+            <i ref="_1505895893221371" x="3628" y="3884"/>
+            <i ref="_150589580259874" x="5586" y="2141"/>
+            <i ref="_1505895891826212" x="2462" y="2457"/>
+            <i ref="_1505895895223569" x="542" y="2141"/>
+            <i ref="_150589580253371" x="4597" y="1485"/>
+            <i ref="_1505895893802433" x="823" y="1027"/>
+            <i ref="_1505895892050252" x="2712" y="2141"/>
+            <i ref="_1505895803119108" x="5077" y="1485"/>
+        </jpa:ws>
+    </jpa:wsl>
+</jpa:entity-mappings>
